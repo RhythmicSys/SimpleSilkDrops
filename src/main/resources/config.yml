@@ -1,0 +1,10 @@
+#list items from https://purpurmc.org/javadoc/org/bukkit/Material.html
+silk-blocks:
+- REINFORCED_DEEPSLATE
+- BUDDING_AMETHYST
+- VINE
+- FROGSPAWN
+- CHORUS_PLANT
+- FARMLAND
+- TALL_GRASS
+- LARGE_FERN

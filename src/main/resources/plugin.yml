@@ -1,0 +1,16 @@
+name: SimpleSilkDrops
+version: '${project.version}'
+main: adhdmc.simplesilkdrops.SimpleSilkDrops
+api-version: 1.19
+authors: [ Rhythmic, Peashooter101 ]
+description: More Configurable Silk Drops
+commands:
+  silkreload:
+    permission: silkdrops.reload
+permissions:
+  silkdrops.reload:
+    default: op
+    description: reload the plugin config
+  silkdrops.drop.all:
+    default: op
+    description: drop all configured blocks
