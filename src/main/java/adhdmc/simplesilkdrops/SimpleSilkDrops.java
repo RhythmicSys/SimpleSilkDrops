@@ -13,6 +13,7 @@ public final class SimpleSilkDrops extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         this.getCommand("silkreload").setExecutor(new ReloadCommand());
         this.registerDefaults();
+        this.saveDefaultConfig();
         Util.reloadSilkBlocks();
 
 
