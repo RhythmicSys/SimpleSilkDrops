@@ -1,5 +1,6 @@
 package adhdmc.simplesilkdrops;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -29,8 +30,10 @@ public class BlockBreakListener implements Listener {
         //If the player doesn't have permission for that block, return and handle as usual
         if (!(player.hasPermission("silkdrops.drop." + blockType.toString().toLowerCase(Locale.ENGLISH)) ||
                 player.hasPermission("silkdrops.drop.all"))) return;
+        if (!player.getGameMode().equals(GameMode.SURVIVAL)) return;
         ItemStack usedTool = player.getInventory().getItemInMainHand();
         ItemMeta toolMeta = usedTool.getItemMeta();
+        if (toolMeta == null) return;
         //If the toold doesn't have silk touch, return and handle as usual
         if (!toolMeta.hasEnchant(Enchantment.SILK_TOUCH)) return;
         //Set the item to drop, clear any normal drops, and drop the item
