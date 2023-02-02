@@ -19,6 +19,7 @@ import java.util.Locale;
 public class BlockBreakListener implements Listener {
 
     HashSet<Material> silkBlocks = Util.getSilkBlocks();
+    HashSet<Material> silkTools = Util.getSilkTools();
     @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
     public void onBlockBreak(BlockBreakEvent breakEvent){
         Player player = breakEvent.getPlayer();
@@ -34,11 +35,14 @@ public class BlockBreakListener implements Listener {
         ItemStack usedTool = player.getInventory().getItemInMainHand();
         ItemMeta toolMeta = usedTool.getItemMeta();
         if (toolMeta == null) return;
-        //If the toold doesn't have silk touch, return and handle as usual
+        //If tool is not configured to be used, return
+        if (!silkTools.contains(usedTool.getType())) return;
+        //If the tool doesn't have silk touch, return and handle as usual
         if (!toolMeta.hasEnchant(Enchantment.SILK_TOUCH)) return;
         //Set the item to drop, clear any normal drops, and drop the item
         ItemStack droppingItem = new ItemStack(blockType, 1);
         breakEvent.setDropItems(false);
-        blockLocation.getWorld().dropItem(blockLocation, droppingItem);
+        Location spotToDrop = blockLocation.toCenterLocation();
+        blockLocation.getWorld().dropItem(spotToDrop, droppingItem);
     }
 }

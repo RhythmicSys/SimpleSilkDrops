@@ -18,6 +18,7 @@ public class ReloadCommand implements CommandExecutor, TabCompleter {
         }
         SimpleSilkDrops.getInstance().reloadConfig();
         Util.reloadSilkBlocks();
+        Util.reloadSilkTools();
         sender.sendRichMessage(SilkDropMessage.CONFIG_RELOADED.getMessage());
         return false;
     }
